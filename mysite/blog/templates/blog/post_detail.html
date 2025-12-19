@@ -1,0 +1,32 @@
+{% extends "blog/base.html" %} {% block content %}
+<main class="max-w-4xl mx-auto w-full px-4 py-16">
+  <article class="bg-white rounded-lg shadow-lg p-10">
+    <h1 class="text-3xl font-bold mb-2">{{ post.title }}</h1>
+    <p class="text-gray-500 mb-6 text-sm">
+      {{ post.author }} | {{ post.created_on }}
+    </p>
+    <div class="prose prose-lg max-w-none text-gray-800 leading-relaxed">
+      {{ post.content|safe }}
+    </div>
+  </article>
+</main>
+{% endblock %}
+<div class="bg-white rounded-lg shadow-md p-6 mt-2 mb-10 md:mb-0">
+  <h5
+    class="bg-gray-100 text-gray-800 font-semibold text-xl px-5 py-3 rounded-t-lg border-b border-gray-200 mb-4"
+  >
+    Chi siamo
+  </h5>
+  <div>
+    <p class="text-gray-700 leading-relaxed mb-4 break-words">
+      Questo fantastico blog è realizzato con il nostro framework full-stack
+      preferito, Django!
+    </p>
+    <a
+      href="https://devnowcode.github.io/sc/"
+      class="inline-block bg-teal-600 hover:bg-teal-700 text-white font-semibold px-5 py-2 rounded transition-colors duration-200 shadow"
+    >
+      Scopri di più!
+    </a>
+  </div>
+</div>

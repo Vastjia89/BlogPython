@@ -1,0 +1,117 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{% block title %}Blog Django Moderno{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'blog/style.css' %}" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Inter:400,700|Montserrat:500,700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body
+    class="min-h-screen bg-gradient-to-br from-teal-200 to-green-100 font-inter flex flex-col"
+  >
+    <!-- NAVBAR -->
+    <header class="bg-white shadow-md font-montserrat">
+      <div
+        class="max-w-7xl mx-auto flex items-center justify-between px-4 py-4"
+      >
+        <div class="text-2xl text-gray-800 font-bold">
+          <a href="{% url 'home' %}" class="hover:text-teal-500 transition"
+            >Blog Django Moderno</a
+          >
+        </div>
+        <button
+          id="menu-toggle"
+          class="md:hidden focus:outline-none text-gray-700"
+          aria-label="Apri menu"
+        >
+          <svg
+            class="w-7 h-7"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"
+            />
+          </svg>
+        </button>
+        <nav class="hidden md:flex flex-row gap-7 text-lg font-semibold">
+          <a
+            href="{% url 'home' %}"
+            class="text-teal-600 rounded-md px-3 py-2 hover:bg-teal-50 transition"
+            >Home</a
+          >
+          <a
+            href="#"
+            class="text-teal-600 rounded-md px-3 py-2 hover:bg-teal-50 transition"
+            >Chi siamo</a
+          >
+          <a
+            href="#"
+            class="text-teal-600 rounded-md px-3 py-2 hover:bg-teal-50 transition"
+            >Servizi</a
+          >
+          <a
+            href="#"
+            class="text-teal-600 rounded-md px-3 py-2 hover:bg-teal-50 transition"
+            >Contatti</a
+          >
+        </nav>
+      </div>
+      <!-- Hamburger dropdown -->
+      <nav
+        id="menu"
+        class="md:hidden hidden flex flex-col gap-2 px-8 pb-4 mt-2"
+      >
+        <a
+          href="{% url 'home' %}"
+          class="text-teal-700 bg-teal-50 rounded px-3 py-2 font-semibold"
+          >Home</a
+        >
+        <a
+          href="#"
+          class="text-teal-700 bg-teal-50 rounded px-3 py-2 font-semibold"
+          >Chi siamo</a
+        >
+        <a
+          href="#"
+          class="text-teal-700 bg-teal-50 rounded px-3 py-2 font-semibold"
+          >Servizi</a
+        >
+        <a
+          href="#"
+          class="text-teal-700 bg-teal-50 rounded px-3 py-2 font-semibold"
+          >Contatti</a
+        >
+      </nav>
+    </header>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const menu = document.getElementById("menu");
+        document.getElementById("menu-toggle").onclick = function () {
+          menu.classList.toggle("hidden");
+        };
+      });
+    </script>
+
+    <!-- PAGE CONTENT -->
+    <main class="flex-1 flex flex-col">{% block content %} {% endblock %}</main>
+
+    <!-- FOOTER -->
+    <footer
+      class="bg-white border-t border-teal-200 shadow-inner text-center py-4 font-montserrat text-gray-700 text-base"
+    >
+      &copy; {{ year|default:"2025" }} Blog Django Moderno - Tutti i diritti
+      riservati
+    </footer>
+  </body>
+</html>
